@@ -1,5 +1,4 @@
 import java.io.IOException;
-
 import Exeptions.InputExceptions.WrongAmount;
 import Exeptions.InputExceptions.WrongDate;
 import Exeptions.InputExceptions.WrongFIO;
@@ -30,7 +29,6 @@ public class Program {
 
         Console console = new Console();
         String data = console.getData();
-
         String[] items = data.split(" ");
         Validator valid = new Validator();
 
@@ -58,6 +56,8 @@ public class Program {
         catch (WrongGender e){
             console.showMessage(e.getMessage());
         }
+
+        
 
         try{
             FileOutput output = new FileOutput(items[0]);
