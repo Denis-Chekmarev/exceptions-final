@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import Exeptions.InputExceptions.WrongAmount;
 import Exeptions.InputExceptions.WrongDate;
 import Exeptions.InputExceptions.WrongFIO;
@@ -27,9 +29,8 @@ public class Program {
 
 
         Console console = new Console();
-        // String data = console.getData();
+        String data = console.getData();
 
-        String data = "Chekmarev Denis Vitalevich 10.10.2001 79628406513 m";
         String[] items = data.split(" ");
         Validator valid = new Validator();
 
@@ -56,6 +57,15 @@ public class Program {
         }
         catch (WrongGender e){
             console.showMessage(e.getMessage());
+        }
+
+        try{
+            FileOutput output = new FileOutput(items[0]);
+            output.write(data);
+        }
+        catch (IOException e){
+            console.showMessage("Не удалось записать данные в файл, посмотрите на описание ошибки:\n");
+            System.out.println(e.getStackTrace());
         }
     }
 }
